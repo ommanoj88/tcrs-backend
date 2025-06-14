@@ -32,9 +32,11 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         try {
             String jwt = parseJwt(request);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                String email = jwtUtils.getEmailFromJwtToken(jwt);
+                // Change this line to use the new method name
+                String phone = jwtUtils.getPhoneFromJwtToken(jwt);
 
-                UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+                // UserDetailsService will load by phone number instead of email
+                UserDetails userDetails = userDetailsService.loadUserByUsername(phone);
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

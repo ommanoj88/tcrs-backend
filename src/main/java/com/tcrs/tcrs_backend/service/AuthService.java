@@ -80,8 +80,7 @@ public class AuthService {
         logger.info("User registered successfully with ID: {}", savedUser.getId());
 
         // Generate tokens
-        String accessToken = jwtUtils.generateTokenFromEmail(savedUser.getEmail());
-        String refreshTokenValue = generateRefreshToken(savedUser);
+        String accessToken = jwtUtils.generateTokenFromPhone(savedUser.getPhone());        String refreshTokenValue = generateRefreshToken(savedUser);
 
         // Create response
         AuthResponse.UserInfo userInfo = new AuthResponse.UserInfo(
@@ -114,17 +113,16 @@ public class AuthService {
 
         // Generate tokens
         String accessToken = jwtUtils.generateJwtToken(authentication);
-
         // Revoke existing refresh tokens for security
-        User user = userRepository.findActiveUserByEmail(userPrincipal.getEmail())
+        // Revoke existing refresh tokens for security
+        User user = userRepository.findActiveUserByPhone(userPrincipal.getPhone())
                 .orElseThrow(() -> new AuthException("User not found"));
 
         refreshTokenRepository.revokeAllUserTokens(user);
 
         String refreshTokenValue = generateRefreshToken(user);
 
-        logger.info("User authenticated successfully: {}", userPrincipal.getEmail());
-
+logger.info("User logged out from all devices: {}", user.getPhone());
         // Create response
         AuthResponse.UserInfo userInfo = new AuthResponse.UserInfo(
                 userPrincipal.getId(),
@@ -149,13 +147,13 @@ public class AuthService {
         User user = refreshToken.getUser();
 
         // Generate new access token
-        String newAccessToken = jwtUtils.generateTokenFromEmail(user.getEmail());
+        String newAccessToken = jwtUtils.generateTokenFromPhone(user.getPhone());
 
         // Optionally generate new refresh token (rotation)
         refreshTokenRepository.revokeAllUserTokens(user);
         String newRefreshToken = generateRefreshToken(user);
 
-        logger.info("Token refreshed successfully for user: {}", user.getEmail());
+        logger.info("Token refreshed successfully for user: {}", user.getPhone());
 
         AuthResponse.UserInfo userInfo = new AuthResponse.UserInfo(
                 user.getId(),

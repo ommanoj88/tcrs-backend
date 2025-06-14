@@ -63,7 +63,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return phone;
     }
 
     @Override

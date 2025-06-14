@@ -15,15 +15,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String emailOrPhone) throws UsernameNotFoundException {
-        User user = userRepository.findActiveUserByEmail(emailOrPhone)
-                .orElse(userRepository.findActiveUserByPhone(emailOrPhone)
-                        .orElseThrow(() -> new UsernameNotFoundException("User not found with email or phone: " + emailOrPhone)));
+   @Override
+   public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
+       User user = userRepository.findActiveUserByPhone(phone)
+               .orElseThrow(() -> new UsernameNotFoundException("User not found with phone: " + phone));
 
-        return UserPrincipal.create(user);
-    }
+       // Change build to create
+       return UserPrincipal.create(user);
+   }
 
     @Transactional
     public UserDetails loadUserById(Long id) {
