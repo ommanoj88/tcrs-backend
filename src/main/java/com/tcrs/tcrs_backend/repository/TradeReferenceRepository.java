@@ -171,4 +171,8 @@ public interface TradeReferenceRepository extends JpaRepository<TradeReference, 
             "tr.phone LIKE CONCAT('%', :searchTerm, '%')) ORDER BY tr.createdAt DESC")
     List<TradeReference> searchReferences(@Param("business") Business business,
                                           @Param("searchTerm") String searchTerm);
+
+    // Add this method to your existing TradeReferenceRepository.java:
+
+    List<TradeReference> findByBusinessIdAndIsActiveTrue(Long businessId);
 }

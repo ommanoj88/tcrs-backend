@@ -138,4 +138,11 @@ public interface PaymentHistoryRepository extends JpaRepository<PaymentHistory, 
     @Query("SELECT ph FROM PaymentHistory ph WHERE ph.business = :business AND ph.isActive = true " +
             "AND ph.paymentStatus = 'PAID' ORDER BY ph.paymentDate DESC")
     List<PaymentHistory> findConsecutivePayments(@Param("business") Business business, Pageable pageable);
+
+    // Add these methods to your existing PaymentHistoryRepository.java:
+
+    List<PaymentHistory> findByBusinessIdAndIsActiveTrue(Long businessId);
+
+    @Query("SELECT ph FROM PaymentHistory ph WHERE ph.business.id = :businessId AND ph.isActive = true ORDER BY ph.createdAt DESC")
+    List<PaymentHistory> findByBusinessIdAndIsActiveTrueOrderByCreatedAtDesc(@Param("businessId") Long businessId);
 }

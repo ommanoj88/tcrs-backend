@@ -14,5 +14,6 @@ public enum IndustryCategory {
     AGRICULTURE,
     AUTOMOTIVE,
     CHEMICALS,
-    OTHER
+    OTHER,
+    EDUCATION
 }

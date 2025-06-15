@@ -111,6 +111,28 @@ public class Business {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // Add these fields to your existing Business entity if they don't exist:
+
+    @Column(name = "address", columnDefinition = "TEXT")
+    private String address;
+
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
+
+    @Column(name = "email", length = 100)
+    private String email;
+
+
+    // Add getters and setters:
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
     // Constructors
     public Business() {}
 

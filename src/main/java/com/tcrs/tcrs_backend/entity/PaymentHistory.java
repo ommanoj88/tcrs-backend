@@ -102,6 +102,18 @@ public class PaymentHistory {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // Add these fields to your existing PaymentHistory entity:
+
+    @Column(name = "days_delayed")
+    private Integer daysDelayed;
+
+
+
+    // Add getters and setters:
+    public Integer getDaysDelayed() { return daysDelayed; }
+    public void setDaysDelayed(Integer daysDelayed) { this.daysDelayed = daysDelayed; }
+
+
     // Constructors
     public PaymentHistory() {}
 
