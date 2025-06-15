@@ -145,4 +145,6 @@ public interface PaymentHistoryRepository extends JpaRepository<PaymentHistory, 
 
     @Query("SELECT ph FROM PaymentHistory ph WHERE ph.business.id = :businessId AND ph.isActive = true ORDER BY ph.createdAt DESC")
     List<PaymentHistory> findByBusinessIdAndIsActiveTrueOrderByCreatedAtDesc(@Param("businessId") Long businessId);
+
+    List<PaymentHistory> findByPaymentStatusIn(List<PaymentStatus> statuses);
 }

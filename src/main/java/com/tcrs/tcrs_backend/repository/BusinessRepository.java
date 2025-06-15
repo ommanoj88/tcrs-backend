@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,5 +72,10 @@ public interface BusinessRepository extends JpaRepository<Business, Long> {
     // Recently added businesses
     @Query("SELECT b FROM Business b WHERE b.isActive = true ORDER BY b.createdAt DESC")
     Page<Business> findRecentBusinesses(Pageable pageable);
+
+
+    long countByCreatedAtAfter(LocalDateTime date);
+    long countByCreatedAtBetween(LocalDateTime startDate, LocalDateTime endDate);
+    long countByGstinVerifiedTrue();
 
 }
