@@ -108,6 +108,10 @@ public class PaymentHistory {
     private Integer daysDelayed;
 
 
+    @Column
+    private LocalDateTime transactionDate;
+
+
 
     // Add getters and setters:
     public Integer getDaysDelayed() { return daysDelayed; }

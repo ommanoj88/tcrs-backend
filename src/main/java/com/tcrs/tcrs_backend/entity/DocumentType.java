@@ -1,0 +1,50 @@
+package com.tcrs.tcrs_backend.entity;
+
+public enum DocumentType {
+    // Business Documents
+    CERTIFICATE_OF_INCORPORATION,
+    MEMORANDUM_OF_ASSOCIATION,
+    ARTICLES_OF_ASSOCIATION,
+    BOARD_RESOLUTION,
+    POWER_OF_ATTORNEY,
+
+    // GST & Tax Documents
+    GST_CERTIFICATE,
+    PAN_CARD,
+    TAN_CERTIFICATE,
+
+    // Financial Documents
+    BANK_STATEMENT,
+    FINANCIAL_STATEMENTS,
+    AUDITED_BALANCE_SHEET,
+    PROFIT_LOSS_STATEMENT,
+    CASH_FLOW_STATEMENT,
+
+    // Director/Authorized Person Documents
+    DIRECTOR_PAN,
+    DIRECTOR_AADHAAR,
+    DIRECTOR_PASSPORT,
+    DIRECTOR_DRIVING_LICENSE,
+    DIRECTOR_BANK_STATEMENT,
+
+    // Address Verification
+    UTILITY_BILL,
+    RENTAL_AGREEMENT,
+    PROPERTY_TAX_RECEIPT,
+    MUNICIPAL_CERTIFICATE,
+
+    // Banking Documents
+    BANK_ACCOUNT_CERTIFICATE,
+    CANCELLED_CHEQUE,
+    BANK_NOC,
+
+    // Compliance Documents
+    MSME_CERTIFICATE,
+    TRADE_LICENSE,
+    PROFESSIONAL_TAX_CERTIFICATE,
+    ESI_CERTIFICATE,
+    PF_CERTIFICATE,
+
+    // Others
+    OTHER
+}

@@ -6,5 +6,8 @@ public enum VerificationStatus {
     VERIFIED,          // Verified by system/admin
     DISPUTED,          // Under dispute
     REJECTED,          // Verification rejected
-    AUTO_VERIFIED      // Automatically verified
+    AUTO_VERIFIED,      // Automatically verified
+    IN_REVIEW,
+    EXPIRED,
+    RESUBMISSION_REQUIRED
 }
